@@ -6,6 +6,7 @@ Summary:        Utility to control X server access
 Url:            http://xorg.freedesktop.org/
 Group:          System/X11
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source1001: 	xhost.manifest
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
@@ -18,6 +19,7 @@ allowed to make connections to the X server.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure
@@ -27,6 +29,7 @@ make %{?_smp_mflags}
 %make_install
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING
 %{_bindir}/xhost
