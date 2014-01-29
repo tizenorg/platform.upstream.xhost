@@ -1,3 +1,5 @@
+%bcond_with x
+
 Name:           xhost
 Version:        1.0.5
 Release:        0
@@ -12,6 +14,10 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xmuu)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
+
+%if !%{with x}
+ExclusiveArch:
+%endif
 
 %description
 xhost is used to manage the list of host names or user names
