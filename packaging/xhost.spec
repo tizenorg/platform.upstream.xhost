@@ -1,7 +1,7 @@
 %bcond_with x
 
 Name:           xhost
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 License:        MIT
 Summary:        Utility to control X server access
@@ -13,6 +13,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xmuu)
+BuildRequires:  pkgconfig(xtrans)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 
 %if !%{with x}
@@ -28,7 +29,7 @@ allowed to make connections to the X server.
 cp %{SOURCE1001} .
 
 %build
-%configure
+%autogen
 make %{?_smp_mflags}
 
 %install
